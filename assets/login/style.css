@@ -1,0 +1,312 @@
+body {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background-image: url(bg.jpg);
+}
+
+.banner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('valentin-petrov-m-mal-01.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: bgZoomIn 4s ease-in-out 1 forwards;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('after.png');
+    background-size: cover;
+    background-position: top;
+    transform: scale(2);
+    animation: bgZoomOut 4s ease-in-out 1 forwards;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes bgZoomIn {
+    from {
+        transform: scale(1.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes bgZoomOut {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2);
+    }
+}
+
+.title {
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+}
+
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.title .form-box {
+    top: 0;
+    width: 50%;
+    height: 100%;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    animation: zoomIn 4.2s ease forwards;
+    transition: backdrop-filter 0.5s ease;
+}
+
+
+.title .form-box.login,
+.title .form-box.forgot {
+    left: 0;
+    padding: 0 100px;
+}
+
+.form-box h2 {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+.form-box .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    padding-right: 23px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom-color: #0ef;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: 0px;
+    color: #0ef;
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    transition: o.5s;
+}
+
+.input-box input:focus~i,
+.input-box input:valid~i {
+    color: #0ef;
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #0ef;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn:hover::before {
+    top: 0;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(#081b29, #0ef, #081b29, #0ef);
+    z-index: -1;
+    transition: .5s;
+}
+
+.form-box .logreg-link {
+    font-size: 14.5px;
+    color: #000000;
+    text-align: center;
+    margin: 20px 0 18px;
+}
+
+.logreg-link p a {
+    color: #0da;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logreg-link p a:hover {
+    text-decoration: underline;
+}
+
+.title .info-text {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title .info-text.login {
+    right: 0;
+    text-align: right;
+    padding: 0px 40px 60px 150px;
+    /* display: none; */
+}
+
+.title .info-text.login .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.title.active .info-text.login .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.zoom-out {
+    animation: zoomOut 2.5s ease forwards;
+}
+
+.zoom-in {
+    animation: zoomIn 2.5s ease forwards;
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* 
+svg path {
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 0.1;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: textAnimation 4s ease-in-out 1 forwards;
+}
+
+@keyframes textAnimation {
+    0% {
+        stroke-dashoffset: 50;
+    }
+
+    80% {
+        fill: transparent;
+    }
+
+    100% {
+        fill: #fff;
+        stroke-dashoffset: 0;
+    }
+} */
